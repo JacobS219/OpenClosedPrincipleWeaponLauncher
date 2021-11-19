@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Launcher : MonoBehaviour
 {
-    private ILauncher launcher;
-
     [SerializeField] private float fireRefreshRate = 1f;
     [SerializeField] private string fireButtonString = "Fire1";
+
+    private ILauncher _launcher;
     private float nextFireTime;
 
     private void Awake()
     {
-        launcher = GetComponent<ILauncher>();
+        _launcher = GetComponent<ILauncher>();
     }
 
     private void Update()
@@ -29,6 +29,6 @@ public class Launcher : MonoBehaviour
     private void FireWeapon()
     {
         nextFireTime = Time.time + fireRefreshRate;
-        launcher.Launch(this);
+        _launcher.Launch(this);
     }
 }
